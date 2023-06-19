@@ -13,7 +13,13 @@ const VacationForm = ({addNewVacation}) => {
         if (selectedStartDate && numDays) {
             const selectedEndDate = new Date(selectedStartDate);
             selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(numDays - 1, 10));
-            setEndDate(selectedEndDate.toISOString().split('T')[0]);
+            setEndDate('');
+        }
+
+        if (selectedStartDate > new Date(endDate)) {
+            window.alert('Start date cannot be before end date.');
+            setStartDate('');
+            setNumDays('');
         }
     };
 
@@ -26,6 +32,12 @@ const VacationForm = ({addNewVacation}) => {
             selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(selectedNumDays - 1, 10));
             setEndDate(selectedEndDate.toISOString().split('T')[0]);
         }
+
+        if (selectedNumDays < 1) {
+            window.alert('Number of days must be at least 1 (not negative).');
+            setEndDate('');
+            setNumDays('');
+        }
     };
 
     const handleEndDateChange = (e) => {
@@ -36,6 +48,12 @@ const VacationForm = ({addNewVacation}) => {
             const diffTime = Math.abs(selectedEndDate - new Date(startDate));
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             setNumDays(diffDays + 1);
+        }
+
+        if (new Date(startDate) > selectedEndDate) {
+            window.alert('Start date cannot be before end date.');
+            setEndDate('');
+            setNumDays('');
         }
     };
 
