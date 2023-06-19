@@ -7,15 +7,36 @@ const VacationForm = () => {
     const [comment, setComment] = useState('');
 
     const handleStartDateChange = (e) => {
+        const selectedStartDate = new Date(e.target.value);
         setStartDate(e.target.value);
+
+        if (selectedStartDate && numDays) {
+            const selectedEndDate = new Date(selectedStartDate);
+            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(numDays, 10));
+            setEndDate(selectedEndDate.toISOString().split('T')[0]);
+        }
     };
 
     const handleNumDaysChange = (e) => {
-        setNumDays(e.target.value);
+        const selectedNumDays = e.target.value;
+        setNumDays(selectedNumDays);
+
+        if (startDate && selectedNumDays) {
+            const selectedEndDate = new Date(startDate);
+            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(selectedNumDays, 10));
+            setEndDate(selectedEndDate.toISOString().split('T')[0]);
+        }
     };
 
     const handleEndDateChange = (e) => {
+        const selectedEndDate = new Date(e.target.value);
         setEndDate(e.target.value);
+
+        if (startDate && selectedEndDate) {
+            const diffTime = Math.abs(selectedEndDate - new Date(startDate));
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            setNumDays(diffDays);
+        }
     };
 
     const handleCommentChange = (e) => {
