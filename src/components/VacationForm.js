@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const VacationForm = () => {
+const VacationForm = ({ addNewVacation }) => {
     const [startDate, setStartDate] = useState('');
     const [numDays, setNumDays] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -45,6 +45,20 @@ const VacationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const newVacation = {
+            startDate,
+            numDays,
+            endDate,
+            comment,
+        };
+
+        addNewVacation(newVacation);
+
+        setStartDate('');
+        setNumDays('');
+        setEndDate('');
+        setComment('');
     };
 
     const handleReset = () => {

@@ -1,10 +1,12 @@
 import React from 'react';
 
-const VacationList = ({ vacations }) => {
+const VacationList = ({ vacationData }) => {
+    console.log(vacationData); // Check if the vacations prop is logged correctly
+
     return (
         <div>
             <h2>Vacation Requests</h2>
-            {vacations.length > 0 ? (
+            {vacationData.length > 0 ? (
                 <table>
                     <thead>
                     <tr>
@@ -15,7 +17,7 @@ const VacationList = ({ vacations }) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {vacations.map((vacation) => (
+                    {vacationData.map((vacation) => (
                         <tr key={vacation.id}>
                             <td>{vacation.startDate}</td>
                             <td>{vacation.endDate}</td>
