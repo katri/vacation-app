@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import vacations from '../data/vacations';
+import React from 'react';
 
-const VacationList = () => {
-
+const VacationList = ({ vacations }) => {
     return (
         <div>
             <h2>Vacation Requests</h2>
