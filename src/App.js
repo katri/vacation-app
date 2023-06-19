@@ -26,17 +26,6 @@ function App() {
         setVacationData((prevVacations) => [...prevVacations, vacationWithId]);
     };
 
-    //
-    // const [vacationData, setVacationData] = useState(vacations);
-    // const addNewVacation = (newVacation) => {
-    //     const vacationWithId = {
-    //         id: vacationData.length + 1,
-    //         ...newVacation,
-    //     };
-    //
-    //     setVacationData((prevVacations) => [...prevVacations, vacationWithId]);
-    // };
-
     return (
         <Router>
             <div className="App">

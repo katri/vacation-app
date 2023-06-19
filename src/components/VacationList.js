@@ -1,8 +1,6 @@
 import React from 'react';
 
-const VacationList = ({ vacationData }) => {
-    console.log(vacationData); // Check if the vacations prop is logged correctly
-
+function VacationList({ vacationData }) {
     return (
         <div>
             <h2>Vacation Requests</h2>
@@ -32,6 +30,6 @@ const VacationList = ({ vacationData }) => {
             )}
         </div>
     );
-};
+}
 
 export default VacationList;
