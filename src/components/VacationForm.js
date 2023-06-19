@@ -47,6 +47,13 @@ const VacationForm = () => {
         e.preventDefault();
     };
 
+    const handleReset = () => {
+        setStartDate('');
+        setNumDays('');
+        setEndDate('');
+        setComment('');
+    };
+
     return (
         <div>
             <h2>Submit Vacation Request</h2>
@@ -91,6 +98,7 @@ const VacationForm = () => {
                     ></textarea>
                 </div>
                 <button type="submit">Submit</button>
+                <button type="button" onClick={handleReset}>Reset</button>
             </form>
         </div>
     );
