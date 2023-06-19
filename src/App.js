@@ -1,6 +1,7 @@
 import './App.css';
 import VacationForm from "./components/VacationForm";
 import VacationList from "./components/VacationList";
+import IndexPage from "./components/IndexPage";
 import vacations from "./data/vacations";
 import {useState, useEffect} from "react";
 import {
@@ -8,7 +9,6 @@ import {
     Routes,
     Route
 } from 'react-router-dom';
-import IndexPage from "./components/IndexPage";
 
 function App() {
     const [vacationData, setVacationData] = useState([]);

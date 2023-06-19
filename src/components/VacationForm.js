@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-const VacationForm = ({ addNewVacation }) => {
+const VacationForm = ({addNewVacation}) => {
     const [startDate, setStartDate] = useState('');
     const [numDays, setNumDays] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -12,7 +12,7 @@ const VacationForm = ({ addNewVacation }) => {
 
         if (selectedStartDate && numDays) {
             const selectedEndDate = new Date(selectedStartDate);
-            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(numDays, 10));
+            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(numDays - 1, 10));
             setEndDate(selectedEndDate.toISOString().split('T')[0]);
         }
     };
@@ -23,7 +23,7 @@ const VacationForm = ({ addNewVacation }) => {
 
         if (startDate && selectedNumDays) {
             const selectedEndDate = new Date(startDate);
-            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(selectedNumDays, 10));
+            selectedEndDate.setDate(selectedEndDate.getDate() + parseInt(selectedNumDays - 1, 10));
             setEndDate(selectedEndDate.toISOString().split('T')[0]);
         }
     };
@@ -35,7 +35,7 @@ const VacationForm = ({ addNewVacation }) => {
         if (startDate && selectedEndDate) {
             const diffTime = Math.abs(selectedEndDate - new Date(startDate));
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            setNumDays(diffDays);
+            setNumDays(diffDays + 1);
         }
     };
 
